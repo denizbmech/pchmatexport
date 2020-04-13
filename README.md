@@ -10,10 +10,10 @@ Example use (C++11):
 int main() {
   std::string pchAddress("C:/myPCHfile.pch");
   
-  auto sysmat = PCH::read_matrix(pchAddress, PCH::MATRIX::STIF); // to extract the stiffness matrix
-  auto sysmat = PCH::read_matrix(pchAddress, PCH::MATRIX::MASS); // to extract the mass matrix
+  auto stifmat = PCH::read_matrix(pchAddress, PCH::MATRIX::STIF); // to extract the stiffness matrix
+  auto massmat = PCH::read_matrix(pchAddress, PCH::MATRIX::MASS); // to extract the mass matrix
   
-  std::cout << sysmat << std::endl; // possible since sysmat is an Eigen::MatrixXd
+  std::cout << stifmat << std::endl; // possible since sysmat is an Eigen::MatrixXd
   
   return 0;
 }
