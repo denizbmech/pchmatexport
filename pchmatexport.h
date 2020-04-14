@@ -97,14 +97,8 @@ std::map<size_t, size_t> build_dofmap(std::string pchAddress) {
 		}
 
 		if (lineToken == "DMIG") {
-			std::vector<std::string> dmigInfo;
-
-			while (iss >> lineToken) {
-				dmigInfo.push_back(lineToken);
-			}
-
-			numDofs = std::stoi(dmigInfo.back());
-
+			while (iss >> lineToken) {}
+			numDofs = std::stoi(lineToken);
 			break;
 		}
 	}
@@ -212,6 +206,7 @@ Eigen::MatrixXd read_matrix(std::string pchAddress, MATRIX matrixType) {
 
 			nodeID = std::stoi(nodeIDStr);
 			nodeDof = std::stoi(nodeDofStr);
+			if (nodeDof == 0) nodeDof = 1;
 
 			auto dofsBefore = dofs_before(nodeID, dofmap);
 			globalRow = dofsBefore + nodeDof - 1;
@@ -230,6 +225,7 @@ Eigen::MatrixXd read_matrix(std::string pchAddress, MATRIX matrixType) {
 
 			nodeID = std::stoi(nodeIDStr);
 			nodeDof = std::stoi(nodeDofStr);
+			if (nodeDof == 0) nodeDof = 1;
 			double matrixElem = std::stod(matrixElemStr);
 
 			auto dofsBefore = dofs_before(nodeID, dofmap);
