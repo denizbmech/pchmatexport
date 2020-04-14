@@ -187,7 +187,7 @@ Eigen::MatrixXd read_matrix(std::string pchAddress, MATRIX matrixType) {
 	size_t globalRow = 0;
 	size_t globalCol = 0;
 
-	bool doProcess = true;
+	bool doProcess = false;
 
 	while (true) {
 		std::getline(ifs, lineRaw);
