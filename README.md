@@ -23,7 +23,7 @@ The only dependency is Eigen 3.3.7 or newer, which is a header-only library.
 
 Important Note:
 
-Some PCH files Nastran generates may have outputs where the * line the DMIG* line has the last two columns contiguous as below: 
+Some PCH files Nastran generates may have outputs where the * lines that come after the DMIG* line have the last two columns contiguous as below: 
 
 ```
 DMIG*   KAAX                           2               1   
