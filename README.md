@@ -20,3 +20,20 @@ int main() {
 
 ```
 The only dependency is Eigen 3.3.7 or newer, which is a header-only library. 
+
+Important Note:
+
+Some PCH files Nastran generates may generate outputs where the * line the DMIG* line has the last two columns contiguous as below: 
+
+```
+DMIG*   KAAX                           2               1   
+*                      1               1-1.866666647D+07  <-- 1 and -1.866666647D+07 are contiguous
+```
+In this case, those two columns needs to be separated as below before running the read_matrix() function:
+
+```
+DMIG*   KAAX                           2               1   
+*                      1               1     -1.866666647D+07  <-- 1 and -1.866666647D+07 are not contiguous anymore
+```
+
+I will modify the script later to automatically account for this.
